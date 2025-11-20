@@ -1,0 +1,79 @@
+PROGRAM 4: Implement passing object as function arguments and return object from function
+
+AIM: To implement and demonstrate the concept of passing objects as function arguments (by value) and returning objects from functions in C++.
+
+ALGORITHM
+
+1.Start the program.
+
+2.Define a class MyClass with a data member value.
+
+3.Create a constructor to initialize the value of the object.
+
+4.Define a function modifyObjectByValue() that:
+
+-Takes an object of MyClass by value.
+
+-Modifies its value attribute.
+
+-Displays the modified value inside the function.
+
+5.In the main() function:
+
+-Create an object originalObj of MyClass with an initial value (e.g., 10).
+
+ -Display the value before calling the function.
+
+ -Call modifyObjectByValue(originalObj) — since it’s passed by value, changes won’t affect the original object.
+
+ -Display the value after the function call to show that it remains unchanged.
+6.End the program.
+
+PROGRAM :
+
+#include using namespace std;
+
+class MyClass { public: int value;
+
+// Constructor to initialize the object
+MyClass(int v) : value(v) {}
+};
+
+// Function that takes an object by value (creates a copy) void modifyObjectByValue(MyClass obj) { obj.value = 100; // Modifies the copy, not the original cout << "Inside function (by value): " << obj.value << endl; }
+
+// Function that returns an object (to demonstrate return object concept) MyClass createNewObject() { MyClass tempObj(200); // Create new object return tempObj; // Return object }
+
+int main() { MyClass originalObj(10);
+
+cout << "Original object before call: " << originalObj.value << endl;
+
+// Passing object by value
+modifyObjectByValue(originalObj);
+
+cout << "Original object after call: " << originalObj.value << endl;
+
+// Returning object from function
+MyClass returnedObj = createNewObject();
+cout << "Returned object value: " << returnedObj.value << endl;
+
+return 0;
+}
+
+SAMPLE OUTPUT :
+
+Original object before call: 10 Inside function (by value): 100 Original object after call: 10 Returned object value: 200
+
+FINAL RESULT : The program successfully demonstrates two key concepts:
+
+1.Passing object as function argument (by value):
+
+-When the object is passed by value, a copy is created inside the function.
+
+-Any modification to the object inside the function does not affect the original object.
+2.Returning object from a function:
+
+-A new object can be created and returned from a function.
+
+-The returned object can hold its own data, separate from the original object.
+
+Hence, the aim of “Implementing passing object as function arguments and returning object from function” is successfully achieved.
