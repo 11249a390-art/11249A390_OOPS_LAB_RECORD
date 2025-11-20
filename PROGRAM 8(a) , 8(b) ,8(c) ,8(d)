@@ -1,0 +1,355 @@
+** PROGRAM 8 : 8.a) Allocating and deallocating a single variable
+
+**AIM**:
+To demonstrate dynamic memory allocation in C++ using new and delete by allocating memory for an integer, accessing its value, and properly deallocating the memory to avoid memory leaks.
+     
+**ALGORITHM ** :
+
+1.Start the program.
+
+2.Dynamically allocate memory for an integer using new and initialize it to 10.
+
+3.Store the address of the allocated memory in a pointer variable ptr_int.
+
+4.Dereference the pointer using *ptr_int to access and print the stored value.
+
+5.Deallocate the previously allocated memory using delete.
+
+6.Set the pointer to nullptr to avoid a dangling pointer.
+
+7.End the program.
+
+**SOURCE CODE ** :
+#include <iostream>
+
+int main() {
+    // Dynamically allocate memory for an integer and initialize it to 10
+    int* ptr_int = new int(10);
+
+    // Print the value stored at the allocated address
+    std::cout << "Value of dynamically allocated integer: " << *ptr_int << std::endl;
+
+    // Deallocate the memory to prevent a memory leak
+    delete ptr_int;
+    ptr_int = nullptr; // Set the pointer to nullptr after deletion (best practice)
+
+    return 0;
+}
+
+**SAMPLE OUTPUT** :
+
+Value of dynamically allocated integer: 10
+
+
+**FINAL RESULT** :
+
+1.The program successfully demonstrates how to:
+
+    Dynamically allocate memory for an integer on the heap using new.
+
+    Access the stored value using dereferencing.
+
+    Properly free the allocated memory using delete.
+
+    Prevent dangling pointers by setting the pointer to nullptr.
+
+2.This ensures efficient memory management and prevents memory leaks in C++.
+
+
+
+**PROGRAM **: 8.b) Allocating and deallocating a dynamic array
+
+**AIM** :
+         To demonstrate how to dynamically allocate memory for an array using new[], store user-inputted values in the array, display the elements, and properly deallocate the memory using delete[] to prevent memory leaks.
+         
+**ALGORITHM** :
+
+1.Start the program.
+
+2.Ask the user to enter the number of elements (size) for the dynamic array.
+
+3.Allocate memory for an integer array of size elements using new[].
+
+4.Prompt the user to input size integer values.
+
+5.Store each value in the dynamically allocated array.
+
+6.Display all elements of the array.
+
+7.Deallocate the allocated memory using delete[].
+
+8.Set the pointer to nullptr to avoid dangling pointers.
+
+9.End the program.
+
+
+**SOURCE CODE** :
+
+
+#include <iostream>
+
+int main() {
+    int size;
+    std::cout << "Enter the number of elements for the dynamic array: ";
+    std::cin >> size;
+
+    // Dynamically allocate memory for an array of integers
+    int* dynamic_array = new int[size];
+
+    // Read values into the array
+    std::cout << "Enter " << size << " integer values:" << std::endl;
+    for (int i = 0; i < size; i++) {
+        std::cin >> dynamic_array[i];
+    }
+
+    // Print the array elements
+    std::cout << "The elements of the dynamic array are: ";
+    for (int i = 0; i < size; i++) {
+        std::cout << dynamic_array[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Deallocate the entire array
+    delete[] dynamic_array;
+    dynamic_array = nullptr;
+
+    return 0;
+}
+
+**SAMPLE OUTPUT ** :
+Enter the number of elements for the dynamic array: 5
+Enter 5 integer values:
+10
+20
+30
+40
+50
+The elements of the dynamic array are: 10 20 30 40 50
+
+**FINAL RESULT** :
+1.The program successfully:
+
+    Takes the array size from the user.
+
+    Dynamically allocates memory for an integer array.
+
+    Accepts values from the user and stores them in the dynamic array.
+
+    Displays all stored elements.
+
+   Properly frees the allocated memory using delete[].
+
+   Sets the pointer to nullptr to ensure safe memory handling.
+
+2.This demonstrates correct usage of dynamic memory allocation and deallocation for arrays in C++.
+
+**PROGRAM ** : 8.c) Dynamic object creation with constructors and destructors
+
+**AIM** :   To demonstrate how constructors and destructors work in C++ when:
+
+Creating and deleting a single dynamically allocated object.
+
+Creating and deleting a dynamically allocated array of objects.
+
+The program shows the order in which constructors and destructors are called in both cases.
+
+**ALGORITHM** :
+
+1.Start the program.
+
+2.Define a Box class that contains:
+
+3.A constructor that prints a message when a Box object is created.
+
+4.A destructor that prints a message when a Box object is destroyed.
+
+5.In main():
+
+    Dynamically allocate a single Box object using new Box(5).
+
+    The constructor runs automatically.
+
+    Delete the object using delete.
+
+   The destructor runs automatically.
+
+6.Create a dynamic array of 3 Box objects using:
+
+        new Box[3]{ Box(1), Box(2), Box(3) }
+
+7.Each element's constructor is called in order.
+
+8.Delete the array using delete[].
+
+9.The destructor is called for each element in reverse order.
+
+10.End the program.
+
+**SOURCE CODE** :
+
+cpp
+#include <iostream>
+
+class Box {
+public:
+    // Constructor
+    Box(int length) {
+        this->length = length;
+        std::cout << "Constructor for a box of length " << length << " is called." << std::endl;
+    }
+
+    // Destructor
+    ~Box() {
+        std::cout << "Destructor for a box of length " << length << " is called." << std::endl;
+    }
+
+private:
+    int length;
+};
+
+int main() {
+    // Create a single Box object dynamically
+    Box* myBox = new Box(5);
+
+    // Deallocate the object, which calls the destructor
+    delete myBox;
+    myBox = nullptr;
+
+    // Create a dynamic array of Box objects
+    Box* boxArray = new Box[3]{Box(1), Box(2), Box(3)};
+
+    // Deallocate the array, calling the destructor for each element
+    delete[] boxArray;
+    boxArray = nullptr;
+
+    return 0;
+}
+
+**SAMPLE OUTPUT** :
+
+Constructor for a box of length 5 is called.
+
+Destructor for a box of length 5 is called.
+
+Constructor for a box of length 1 is called.
+
+Constructor for a box of length 2 is called.
+
+Constructor for a box of length 3 is called.
+
+Destructor for a box of length 3 is called.
+
+Destructor for a box of length 2 is called.
+
+Destructor for a box of length 1 is called.
+
+
+**FINAL RESULT** :
+
+The program successfully demonstrates:
+
+How constructors are called automatically when dynamically creating objects and arrays.
+
+How destructors are called when objects are deallocated using delete or delete[].
+
+The order of destructor calls for arrays (reverse of construction order).
+
+Proper memory cleanup by setting pointers to nullptr.
+
+This helps in understanding object lifecycle, dynamic allocation, and destructor behavior in C++
+
+
+
+**PROGRAM** : 8.d) Illustrative Program
+
+**AIM** :
+        To demonstrate the use of dynamic memory allocation in C++ by:
+
+Allocating memory for a single integer.
+
+Allocating memory for an array of integers.
+
+Assigning values to dynamically allocated memory.
+
+Accessing and displaying those values.
+
+Properly releasing allocated memory using delete and delete[].
+
+
+**ALGORITHM** :
+
+1.Start the program.
+
+2.Dynamically allocate memory for a single integer using new int.
+
+3.Assign the value 25 to this memory and print it.
+
+4.Define an integer variable size = 3.
+
+5.Dynamically allocate an integer array of size 3 using new int[size].
+
+6.Store values (10, 20, 30) in the array using a loop.
+
+7.Print the array elements.
+
+8.Deallocate the memory for the single integer using delete.
+
+9.Deallocate the memory for the array using delete[].
+
+10.Set both pointers to nullptr to avoid dangling pointers.
+
+11.End the program.
+
+**SOURCE CODE** :
+
+#include <iostream>
+
+int main() {
+    // Dynamic allocation for a single integer
+    int* singleInt = new int;
+    *singleInt = 25;
+    std::cout << "Value of singleInt: " << *singleInt << std::endl;
+
+    // Dynamic allocation for an array of integers
+    int size = 3;
+    int* dynamicArray = new int[size];
+    for (int i = 0; i < size; ++i) {
+        dynamicArray[i] = (i + 1) * 10;
+    }
+
+    std::cout << "Elements of dynamicArray: ";
+    for (int i = 0; i < size; ++i) {
+        std::cout << dynamicArray[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Deallocate memory
+    delete singleInt;
+    singleInt = nullptr; // Good practice to set pointer to nullptr after deletion
+
+    delete[] dynamicArray;
+    dynamicArray = nullptr; // Good practice to set pointer to nullptr after deletion
+
+    return 0;
+}
+
+**SAMPLE OUTPUT** :
+
+Value of singleInt: 25
+
+Elements of dynamicArray: 10 20 30
+
+
+**FINAL RESULT** :
+
+The program successfully:
+
+Allocates memory dynamically for both a single variable and an array.
+
+Stores and displays integer values using pointer-based dynamic memory.
+
+Releases allocated memory properly using delete and delete[].
+
+Prevents memory leaks and dangling pointers by setting the pointers to nullptr.
+
+Thus, the program demonstrates safe and effective dynamic memory management in C++.
