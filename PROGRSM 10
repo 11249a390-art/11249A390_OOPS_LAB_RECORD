@@ -1,0 +1,56 @@
+**PROGRASM 10** : 10.a) Overloading the unary minus (-) operator
+
+AIM
+
+To demonstrate overloading the unary minus (-) operator in C++ using a member function.
+The program negates the coordinates of a Point object using the overloaded unary minus operator.
+
+✅ ALGORITHM
+
+1.Start the program.
+
+2,Define a class Point with:
+
+   Private members x and y for coordinates.
+
+   A constructor to initialize x and y (default values 0).
+
+   A member function operator-() that returns a new Point object with x and y negated.
+
+   A display() function to print the point’s coordinates.
+
+3.In main():
+
+    Create a Point object p1 with coordinates (10, -20).
+
+    Use the overloaded unary minus operator to create p2 = -p1.
+
+    Display both p1 and p2 using display().
+
+4.End the program.
+
+
+
+**SAMPLE OUTPUT** :
+
+Original point p1: Point(10, -20)
+
+Negated point p2: Point(-10, 20)
+
+**FINAL RESULT** :
+
+The program successfully demonstrates:
+
+Overloading of the unary minus operator for a user-defined class.
+
+Creation of a new object with negated coordinates.
+
+Correct display of the original and negated points using a member function.
+
+This illustrates operator overloading in C++ and shows
+
+
+PROGRAM 10 :10.b) Overloading with a friend function
+
+
+**AIM** :
