@@ -1,0 +1,154 @@
+**PROGRAM 5 : To demonstrate the use of constructor with its types and destructor**
+
+**AIM** :
+
+To demonstrate the use of default constructor, parameterized constructor, copy constructor, and destructor in a C++ class, and to show how these special member functions are invoked automatically
+during object creation and destruction.
+
+**ALGORITHM**
+
+ 1.Start the program.
+
+2.Define a class MyClass containing:
+
+    An integer data member value.
+
+    A default constructor that sets value = 0 and prints a message.
+
+    A parameterized constructor that sets value to a user-given value and prints a message.
+
+    A copy constructor that copies the value from another object.
+
+    A destructor that prints a message when an object is destroyed.
+
+3.In the main() function:
+
+   Create obj1 using the default constructor.
+
+   Create obj2 using the parameterized constructor with value 10.
+
+   Create obj3 as a copy of obj2, which calls the copy constructor.
+
+4.End of main() function, where all objects go out of scope.
+
+5.The destructor is called automatically for each object in reverse order of their creation.
+
+6.End Program.
+
+
+SOURCE CODE :
+
+Demonstration (C++):
+C++
+#include <iostream>
+
+class MyClass {
+public:
+    int value;
+
+    // Default Constructor
+    MyClass() {
+        value = 0;
+        std::cout << "Default Constructor Called. Value: " << value << std::endl;
+    }
+
+    // Parameterized Constructor
+    MyClass(int val) {
+        value = val;
+        std::cout << "Parameterized Constructor Called. Value: " << value << std::endl;
+    }
+
+    // Copy Constructor
+    MyClass(const MyClass& other) {
+        value = other.value;
+        std::cout << "Copy Constructor Called. Value: " << value << std::endl;
+    }
+
+    // Destructor
+    ~MyClass() {
+        std::cout << "Destructor Called for object with value: " << value << std::endl;
+    }
+};
+
+int main() {
+    // Calling Default Constructor
+    MyClass obj1;
+
+    // Calling Parameterized Constructor
+    MyClass obj2(10);
+
+    // Calling Copy Constructor
+    MyClass obj3 = obj2; // or MyClass obj3(obj2);
+
+    return 0; // Destructors will be called automatically when objects go out of scope
+}
+6. Illustrate the use of static data member and static member function
+Static data members and static member functions in C++ provide a way to associate data and behavior with the class itself, rather than with individual objects of the class.
+Static Data Member:
+A static data member is a member variable that belongs to the class as a whole, not to any specific object. There is only one copy of a static data member for the entire class, shared by all objects. 
+Use Case: Counting the number of objects created for a class.
+
+Code: 
+
+#include <iostream>
+
+class Car {
+public:
+    static int carCount; // Static data member to count cars
+
+    Car() {
+        carCount++; // Increment count when a new car object is created
+    }
+
+    void displayCarInfo() {
+        std::cout << "This is a car object." << std::endl;
+    }
+};
+
+// Initialize static data member outside the class definition
+int Car::carCount = 0;
+
+int main() {
+    Car car1;
+    Car car2;
+    Car car3;
+
+    std::cout << "Total cars created: " << Car::carCount << std::endl; // Access using class name
+
+    return 0;
+}
+
+** SAMPLE OUTPUT** :
+
+(Actual output may vary slightly depending on compiler)
+
+Default Constructor Called. Value: 0
+
+Parameterized Constructor Called. Value: 10
+
+Copy Constructor Called. Value: 10
+
+Destructor Called for object with value: 10
+
+Destructor Called for object with value: 10
+
+Destructor Called for object with value: 0
+
+
+** FINAL RESULT ** :
+The program successfully demonstrates:
+
+
+How constructors initialize objects automatically.
+
+
+How the copy constructor is invoked when a new object is created from an existing object.
+
+
+How the destructor is executed when objects go out of scope.
+
+
+Order of destruction is reverse of construction.
+
+
+This helps in understanding the lifecycle of objects in C++ and the role of special member functions.
