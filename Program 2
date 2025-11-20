@@ -1,0 +1,73 @@
+PROGRAM 2 : To demonstrate the concept of function overloading applied to the member functions AIM :
+
+To demonstrate the concept of Function Overloading applied to member functions in C++. Function overloading allows multiple functions to have the same name but differ in the number or type of parameters.
+
+ALGORITHM :
+
+1.Start the program.
+
+2.Create a class named Calculator.
+
+3.Inside the class, define multiple add() functions with the same name but different parameter lists:
+
+ -add(int, int) → adds two integers.
+
+ -add(int, int, int) → adds three integers.
+
+ -add(string, string) → concatenates two strings.
+4.In the main() function:
+
+ -Create an object calc of the class Calculator.
+
+ -Call the overloaded add() function with different argument types and counts.
+4.Display the results for each function call.
+
+5.End the program.
+
+SOURCE CODE :
+
+#include #include using namespace std;
+
+class Calculator { public: // Overloaded member function to add two integers int add(int a, int b) { return a + b; }
+
+// Overloaded member function to add three integers
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+// Overloaded member function to concatenate two strings
+string add(const string& s1, const string& s2) {
+    return s1 + s2;
+}
+};
+
+int main() { Calculator calc;
+
+// Call the add function for integers (two arguments)
+int sum1 = calc.add(5, 10);
+cout << "Sum of two integers: " << sum1 << endl;
+
+// Call the add function for integers (three arguments)
+int sum2 = calc.add(5, 10, 15);
+cout << "Sum of three integers: " << sum2 << endl;
+
+// Call the add function for strings
+string combinedString = calc.add("Hello, ", "World!");
+cout << "Combined string: " << combinedString << endl;
+
+return 0;
+} SAMPLE OUTPUT
+
+Sum of two integers: 15 Sum of three integers: 30 Combined string: Hello, World!
+
+FINAL RESULT The program successfully demonstrates Function Overloading in C++:
+
+The same function name add() performs different operations depending on the type and number of arguments passed.
+
+It shows how compile-time polymorphism (also called static binding) works in C++.
+
+Hence, the aim of demonstrating function overloading applied to member functions is achieved successfully.
+
+
+
+
