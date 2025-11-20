@@ -1,0 +1,94 @@
+**PROGRSM 6: Illustrate the use of array of objects **
+
+**AIM** :
+To write a C++ program that demonstrates how to declare, initialize, and access an array of objects using a Student class.
+The program stores the details (name and roll number) of multiple students and displays them.
+
+**ALGORITHM** :
+
+1.Start the program.
+
+2.Define a class Student with:
+
+     Data members: name (string), rollNumber (int)
+
+     A member function displayInfo() to print student details.
+
+3.In the main() function:
+
+   Declare an array of 3 Student objects:
+Student students[3];
+
+   Initialize each object:
+
+      Assign name and roll number to students[0]
+
+     Assign name and roll number to students[1]
+
+     Assign name and roll number to students[2]
+
+4.Use a for loop to iterate through the array and call displayInfo() for each student.
+
+5.End the program.
+
+**SOURCE CODE** :
+
+C++
+    #include <iostream>
+    #include <string>
+
+    class Student {
+    public:
+        std::string name;
+        int rollNumber;
+
+        void displayInfo() {
+            std::cout << "Name: " << name << ", Roll No: " << rollNumber << std::endl;
+        }
+    };
+
+    int main() {
+        Student students[3]; // Declaring an array of 3 Student objects
+
+        // Initializing and accessing objects in the array
+        students[0].name = "Alice";
+        students[0].rollNumber = 101;
+
+        students[1].name = "Bob";
+        students[1].rollNumber = 102;
+
+        students[2].name = "Charlie";
+        students[2].rollNumber = 103;
+
+        // Displaying information for all students
+        for (int i = 0; i < 3; ++i) {
+            students[i].displayInfo();
+        }
+
+        return 0;
+    }
+
+
+**SAMPLE OUTPUT** :
+
+When you run the program, the output will be:
+
+Name: Alice, Roll No: 101
+Name: Bob, Roll No: 102
+Name: Charlie, Roll No: 103
+
+
+**FINAL RESULT** :
+
+The program successfully demonstrates how:
+
+A class can be used to model a student.
+
+An array of objects can store multiple instances of a class.
+
+Each object in the array can be accessed and manipulated individually.
+
+The displayInfo() function prints the stored data of all students.
+
+This helps understand object arrays and class usage in C++.
+
