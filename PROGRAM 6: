@@ -1,0 +1,82 @@
+**PROGRAM 6** :  Illustrate the use of static data member and static member function
+
+**AIM** :
+To write a C++ program that demonstrates the use of a static data member inside a class.
+The program counts how many objects of the Car class are created using a static variable that is shared among all objects.
+
+**ALGORITHM** :
+
+1.Start the program.
+
+2.Define a class Car:
+
+    Declare a static integer data member carCount to store the total number of Car objects created.
+
+    Create a constructor that increments carCount each time a new object is created.
+
+    Define a member function displayCarInfo() to display basic information.
+
+3.Define and initialize the static member outside the class:
+
+    int Car::carCount = 0;
+
+4.In the main() function:
+
+    Create three objects: car1, car2, and car3.
+
+    Print the total number of cars created using the class name:
+
+     Car::carCount
+
+5.End the program.
+
+
+***SOURCE CODE** :
+Code: 
+
+
+#include <iostream>
+
+class Car {
+public:
+    static int carCount; // Static data member to count cars
+
+    Car() {
+        carCount++; // Increment count when a new car object is created
+    }
+
+    void displayCarInfo() {
+        std::cout << "This is a car object." << std::endl;
+    }
+};
+
+// Initialize static data member outside the class definition
+int Car::carCount = 0;
+
+int main() {
+    Car car1;
+    Car car2;
+    Car car3;
+
+    std::cout << "Total cars created: " << Car::carCount << std::endl; // Access using class name
+
+    return 0;
+}
+
+
+**SAMPLE OUTPUT ** :
+
+Total cars created: 3
+
+**FINAL RESULT** :
+
+The program successfully demonstrates:
+
+      How static data members are shared across all objects of a class.
+
+      How the constructor can be used to automatically update a static counter whenever a new object is created.
+
+      That the total count of objects can be accessed using the class name (Car::carCount).
+
+Thus, the program correctly counts and displays the number of car objects created.
+
