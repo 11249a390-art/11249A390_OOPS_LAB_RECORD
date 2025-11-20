@@ -1,0 +1,276 @@
+**PROGRAM 9** : 9(a) Illustrate the use of friend class and friend function 
+
+**AIM** : 
+         To demonstrate how a friend class can access the private and protected members of another class in C++.
+The program shows how class GFG is allowed to access private and protected data members of class Geeks through the friend keyword.
+
+** ALGORITHM ** :
+
+1.Start the program.
+
+2.Create a class Geeks with:
+
+   A private data member private_variable.
+
+   A protected data member protected_variable.
+
+   A constructor that initializes both members.
+
+   A friend class declaration: friend class GFG;
+
+3.Define class GFG, which:
+
+   Has a member function display() that accepts a Geeks object.
+
+   Accesses and prints the private and protected members of the Geeks class using friendship.
+
+4.In main():
+
+   Create an object g of class Geeks.
+
+   Create an object fri of class GFG.
+
+  Call fri.display(g) to display values of private and protected members.
+
+5.End the program.
+
+**SOURCE CODE** :
+
+#include <iostream>
+using namespace std;
+​
+class Geeks {
+private:
+    int private_variable;
+​
+protected:
+    int protected_variable;
+​
+public:
+    Geeks() {
+        private_variable = 10;
+        protected_variable = 99;
+    }
+​
+    // friend class declaration
+    friend class GFG;
+};
+​
+// class GFG is declared as a friend
+// inside class Geeks, therefore
+// Class GFG can access private members
+// of class Geeks.
+class GFG {
+public:
+    void display(Geeks& t) {
+        cout << "The value of Private Variable = "
+             << t.private_variable << endl;
+        cout << "The value of Protected Variable = "
+             << t.protected_variable;
+    }
+};
+​
+int main() {
+    Geeks g;
+    GFG fri;
+    fri.display(g);
+    return 0;
+}
+
+
+**SAMPLE OUTPUT** :
+
+The value of Private Variable = 10
+
+The value of Protected Variable = 99
+
+
+**FINAL RESULT** :
+
+The program successfully shows that:
+
+A friend class can access both private and protected members of another class.
+
+Class GFG, declared as a friend of class Geeks, can directly access private_variable and protected_variable.
+
+The use of friendship increases flexibility but should be used carefully, as it breaks encapsulation.
+
+Thus, the program demonstrates the concept and benefits of friend classes in C++.
+
+
+**PROGRAM 9(b) :
+
+ ** AIM ** :
+
+To demonstrate how a friend function can access the private and protected members of a class in C++. The program shows how the friend function friendFunction can access data members of the class base.
+
+**ALGORITHM** :
+
+1.Start the program.
+
+2.Define a class base with:
+
+     A private member private_variable.
+
+     A protected member protected_variable.
+
+     A constructor to initialize these members (private_variable = 10, protected_variable = 99).
+
+     A friend function declaration: friend void friendFunction(base& obj);
+
+3.Define the friend function friendFunction(base& obj) that:
+
+     Accepts a reference to a base object.
+
+     Prints the values of private_variable and protected_variable.
+
+4.In main():
+
+    Create an object object1 of class base.
+
+   Call friendFunction(object1) to display the private and protected members.
+
+5.End the program.
+
+
+**SAMPLE OUTPUT* :
+
+Private Variable: 10
+
+Protected Variable: 99
+
+
+**FINAL RESULT** :
+
+The program successfully demonstrates:
+
+A friend function can access both private and protected members of a class.
+
+The friend keyword allows controlled access to private data without breaking class encapsulation completely.
+
+The function friendFunction is not a member of the class but can still access its internal members.
+
+This is a clear example of friend functions in C++.
+
+
+
+
+**PROGRAM** 9 :9.c) Member Function of Another Class as Friend Function
+
+**AIM** : To demonstrate how a member function of one class can be declared as a friend of another class in C++.
+The program shows that the GFG_Function of class GFG can access the private and protected members of class base.
+
+
+**ALGORITHM** : 
+
+ALGORITHM
+
+Start the program.
+
+Forward declare the class base because it is used in GFG before its full definition.
+
+Define class GFG with:
+
+A member function GFG_Function(base& obj) that will access base’s private/protected members.
+
+Define class base with:
+
+A private member private_variable.
+
+A protected member protected_variable.
+
+A constructor to initialize private_variable = 10 and protected_variable = 99.
+
+Declare GFG::GFG_Function as a friend function using:
+
+friend void GFG::GFG_Function(base&);
+
+
+Define GFG::GFG_Function(base& obj) outside the class:
+
+Access and print the private and protected members of base.
+
+In main():
+
+Create an object object1 of class base.
+
+Create an object object2 of class GFG.
+
+Call object2.GFG_Function(object1) to display the private and protected members.
+
+End the program.
+
+
+**SOURCE CODE** :
+
+#include <iostream>
+using namespace std;
+​
+// Forward Declaration needed
+class base;
+​
+// Another class in which function is declared
+class GFG {
+public:
+    void GFG_Function(base& obj);
+};
+​
+// Base class declare a frined
+// function of another class
+class base {
+private:
+    int private_variable;
+​
+protected:
+    int protected_variable;
+​
+public:
+    base() {
+        private_variable = 10;
+        protected_variable = 99;
+    }
+​
+    // Friend function declaration
+    friend void GFG::GFG_Function(base&);
+};
+​
+// Friend function definition
+void GFG::GFG_Function(base& obj) {
+    cout << "Private Variable: " << 
+             obj.private_variable
+         << endl;
+    cout << "Protected Variable: " << 
+             obj.protected_variable;
+}
+​
+int main() {
+    base object1;
+    GFG object2;
+    object2.GFG_Function(object1);
+​
+    return 0;
+}
+
+ 
+ **SAMPLE OUTPUT** :
+ 
+Private Variable: 10
+
+Protected Variable: 99
+
+ 
+ **FINAL RESULT** :
+
+The program successfully demonstrates:
+
+How a member function of one class (GFG_Function of GFG) can be a friend of another class (base).
+
+That a friend function of another class can access both private and protected members of the class it is a friend of.
+
+Proper use of forward declaration and friendship in C++ for controlled access between classes.
+
+This is an example of friend member functions across classes, which allows selective access without breaking encapsulation entirely.
+
+
+
+  
