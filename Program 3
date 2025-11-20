@@ -1,0 +1,65 @@
+PROGRAM 3 : Implement passing object as function arguments and return object from function
+
+AIM: To demonstrate how to pass objects as function arguments (by value and by reference) and return objects from functions in C++.
+
+ALGORITHM :
+
+1.Start the program.
+
+2.Create a class MyClass with a data member value.
+
+3.Define a constructor to initialize the object with a given value.
+
+4.Write a function modifyObject() that takes a MyClass object by value and modifies it — this will not affect the original object.
+
+5.Write another function modifyAndReturn() that takes a MyClass object, modifies it, and returns a new object.
+
+6.In the main() function:
+
+-Create an object originalObj.
+
+-Pass it to modifyObject() (changes won’t affect the original).
+
+-Pass it to modifyAndReturn() and get a new modified object as return.
+
+-Display the results.
+
+7.End the program.
+
+PROGRAM #include
+
+class MyClass {
+public:
+    int value;
+    MyClass(int v) : value(v) {}
+    };
+
+void modifyObject(MyClass obj) { // obj is a copy
+    obj.value = 100;
+}
+
+int main() {
+    MyClass originalObj(10);
+    std::cout << "Original value before: " << originalObj.value << std::endl;
+    modifyObject(originalObj);
+    std::cout << "Original value after: " << originalObj.value << std::endl; // Still 10
+    return 0;
+}
+SAMPLE OUTPUT : Original value before modifyObject(): 10 Inside modifyObject(): value changed to 100 Original value after modifyObject(): 10 Original value after modifyAndReturn(): 10 New object value (returned): 200
+
+FINAL RESULT The program demonstrates two important concepts:
+
+1.Passing object as a function argument (by value):
+
+-When an object is passed by value, a copy of the object is made.
+
+-Changes inside the function do not affect the original object.
+
+2.Returning object from a function:
+
+-A function can return an object.
+
+-The returned object can contain modified data that is independent of the original.
+
+Thus, the aim of implementing passing object as function argument and returning object from function is successfully achieved.
+
