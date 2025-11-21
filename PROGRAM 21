@@ -1,0 +1,38 @@
+**21. To demonstrate exception handling (try, catch, throw)**
+
+*Aim:*
+Show exception handling using throw, try, and catch.
+
+*Algorithm:*
+
+1.Include <iostream> and <stdexcept> (optional).
+2.In a function, check a condition and throw an exception (e.g., division by zero).
+3.In main(), wrap call in try block and catch appropriate exception types.
+4.Print error message in catch
+5.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+double divide(double a, double b) {
+    if (b == 0) throw "Division by zero error";
+    return a / b;
+}
+int main() {
+    try {
+        cout << divide(10, 2) << endl;
+        cout << divide(5, 0) << endl;
+    } catch (const char* msg) {
+        cout << "Caught exception: " << msg << endl;
+    }
+    return 0;
+}
+
+*Output:*
+
+5
+Caught exception: Division by zero error
+
+*Result:*
+Exceptions propagate to catch blocks,program handles errors gracefully without crashing.
