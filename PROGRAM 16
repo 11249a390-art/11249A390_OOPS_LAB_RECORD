@@ -1,0 +1,36 @@
+**16. Hierarchical inheritance**
+
+*Aim:*
+Show hierarchical inheritance where multiple derived classes inherit from the same base.
+
+*Algorithm:*
+
+1.Include <iostream>.
+2.Define base class Animal with a method eat().
+3.Define Dog : public Animal and Cat : public Animal, each with its own method.
+4.In main(), create objects of Dog and Cat and call common and specific methods.
+5.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+class Animal { public: void eat(){ cout << "Eating\n"; } };
+class Dog : public Animal { public: void bark(){ cout << "Bark\n"; } };
+class Cat : public Animal { public: void meow(){ cout << "Meow\n"; } };
+int main() {
+    Dog d; Cat c;
+    d.eat(); d.bark();
+    c.eat(); c.meow();
+    return 0;
+}
+
+*Output:*
+
+Eating
+Bark
+Eating
+Meow
+
+*Result:*
+Hierarchical inheritance allows multiple derived classes to reuse the base class’s behavior independently.
