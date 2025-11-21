@@ -1,0 +1,51 @@
+**18. To implement abstraction by using pure virtual functions (abstract class)**
+
+*Aim:*
+Demonstrate abstract class and pure virtual functions.
+
+*Algorithm:*
+
+1.Include <iostream>.
+2.Define abstract base class Shape with pure virtual area() and a virtual destructor.
+3.Implement derived classes Rectangle and Circle overriding area().
+4.In main(), create pointers of type Shape* pointing to derived objects and call area().
+5.Print calculated areas.
+6.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+class Shape {
+public:
+    virtual double area() const = 0;
+    virtual ~Shape() {}
+};
+class Rectangle : public Shape {
+    double w, h;
+public:
+    Rectangle(double _w, double _h): w(_w), h(_h) {}
+    double area() const override { return w * h; }
+};
+class Circle : public Shape {
+    double r;
+public:
+    Circle(double _r): r(_r) {}
+    double area() const override { return 3.14159 * r * r; }
+};
+int main() {
+    Shape* s1 = new Rectangle(4,5);
+    Shape* s2 = new Circle(3);
+    cout << "Rect area: " << s1->area() << endl;
+    cout << "Circle area: " << s2->area() << endl;
+    delete s1; delete s2;
+    return 0;
+}
+
+*Output:*
+
+Rect area: 20
+Circle area: 28.2743
+
+*Result:*
+Abstract base class enforces implementation of area() in derived classes; polymorphism allows runtime binding.
