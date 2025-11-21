@@ -1,0 +1,45 @@
+# *25. To demonstrate sorting and searching using STL algorithms*
+
+Aim:
+To demonstrate sorting and binary search using STL algorithms.
+
+Algorithm:
+
+1. Start program.
+2. Create vector with unsorted elements.
+3. Sort using sort().
+4. Search element using binary_search().
+5. Display result.
+6. End program.
+
+Program:
+
+cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<int> v = {5,2,9,1,7};
+    
+    sort(v.begin(), v.end());
+    
+    for(int x : v) 
+        cout << x << " ";
+    cout << endl;
+    
+    cout << (binary_search(v.begin(), v.end(), 7) ? "Found" : "Not Found") << endl;
+    
+    return 0;
+}
+
+
+Output:
+1 2 5 7 9
+Found
+
+Result:
+Sorting and searching using STL executed successfully.
+
+---
