@@ -1,0 +1,34 @@
+**12. Assignment and comparison of two strings (binary operator overloading)**
+
+*Aim:*
+Demonstrate assignment and comparison (equality) of strings (using std::string).
+
+*Algorithm:*
+
+1.Include <iostream> and <string>.
+2.Use std::string which provides assignment and equality == by default.
+3.Create sample strings, assign one to another, and compare using ==.
+4.Print comparison results.
+5.End program.
+
+*Program:*
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string s1 = "Hello";
+    string s2 = "World";
+    string s3 = s1; // assignment
+    cout << (s1 == s3 ? "s1 equals s3" : "s1 not equal s3") << endl;
+    cout << (s1 == s2 ? "s1 equals s2" : "s1 not equal s2") << endl;
+    return 0;
+}
+
+*Output:*
+
+s1 equals s3
+s1 not equal s2
+
+*Result:*
+Standard std::string supports assignment and equality comparison directly. Results show correct behavior for assignment and comparison.
