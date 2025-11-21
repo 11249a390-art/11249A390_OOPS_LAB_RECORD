@@ -1,0 +1,39 @@
+**19. To implement runtime polymorphism using virtual functions**
+
+*Aim:*
+Show runtime polymorphism where base pointer calls derived class methods using virtual functions.
+
+*Algorithm:*
+
+1.Include <iostream>.
+2.Create base class Base with virtual show() method.
+3.Derive Derived and override show().
+4.In main(), create Base* pointer to Derived object and call show() to demonstrate polymorphism.
+5.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+class Base {
+public:
+    virtual void show(){ cout << "Base\n"; }
+    virtual ~Base() {}
+};
+class Derived : public Base {
+public:
+    void show() override { cout << "Derived\n"; }
+};
+int main() {
+    Base* p = new Derived();
+    p->show();
+    delete p;
+    return 0;
+}
+
+*Output:*
+
+Data from file : Hello, this is a file handling example.
+
+*Result:*
+Virtual functions enable correct derived class methods to be called through base class pointers at runtime.
