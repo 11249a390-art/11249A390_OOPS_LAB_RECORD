@@ -1,0 +1,46 @@
+# *23. To demonstrate STL – vector and iterator*
+
+Aim:
+To demonstrate vector operations and iterators in STL.
+
+Algorithm:
+
+1. Start program.
+2. Create vector and insert elements.
+3. Use iterator to traverse and print elements.
+4. Display size.
+5. End program.
+
+Program:
+
+cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v;
+    
+    v.push_back(10);
+    v.push_back(20);
+    v.push_back(30);
+    
+    for (vector<int>::iterator it = v.begin(); it != v.end(); ++it)
+        cout << *it << endl;
+    
+    cout << "Size: " << v.size() << endl;
+    
+    return 0;
+}
+
+
+Output:
+10
+20
+30
+Size: 3
+
+Result:
+STL vector and iterator operations demonstrated successfully.
+
+---
