@@ -1,0 +1,63 @@
+# *26. Mini Project – Simple student management system*
+
+Aim:
+To implement a simple student record system using classes, vectors, and file handling.
+
+Algorithm:
+
+1. Start program.
+2. Create Student class with data members and display function.
+3. Store objects inside vector.
+4. Display all student records.
+5. Save records to text file using ofstream.
+6. End program.
+
+Program:
+
+cpp
+#include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+class Student {
+public:
+    string name;
+    int roll;
+    
+    Student(string n="", int r=0): name(n), roll(r) {}
+    
+    void display(){
+        cout << roll << " : " << name << endl;
+    }
+};
+
+int main() {
+    vector<Student> list;
+    
+    list.push_back(Student("Alice",101));
+    list.push_back(Student("Bob",102));
+    
+    cout << "Students:\n";
+    for(auto &s : list)
+        s.display();
+    
+    ofstream fout("students.txt");
+    for(auto &s : list)
+        fout << s.roll << " " << s.name << "\n";
+    fout.close();
+    
+    cout << "Saved to students.txt\n";
+    
+    return 0;
+}
+
+
+Output:
+Students:
+101 : Alice
+102 : Bob
+Saved to students.txt
+
+Result:
+Student record stored and saved successfully using vectors and file handling.
