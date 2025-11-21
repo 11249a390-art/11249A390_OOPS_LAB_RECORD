@@ -1,0 +1,40 @@
+**11. To implement the use of binary operator overloading**
+
+*Aim:*
+Overload a binary operator (+) to add two Point objects.
+
+*Algorithm:*
+
+1.Include <iostream>.
+2.Define class Point with x and y as data members and a constructor.
+3.Declare operator+ as a member or friend that takes a const Point& and returns a Point.
+4.Inside operator+, add corresponding coordinates and return a new Point.
+5.In main(), create two Point objects, add them using +, and print the result.
+6.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+class Point {
+public:
+    int x, y;
+    Point(int a=0,int b=0): x(a), y(b) {}
+    Point operator+(const Point &p) const {
+        return Point(x + p.x, y + p.y);
+    }
+    void display() const { cout << x << ", " << y << endl; }
+};
+int main() {
+    Point p1(2,3), p2(4,5);
+    Point p3 = p1 + p2;
+    p3.display();
+    return 0;
+}
+
+*Output:*
+
+6, 8
+
+**Result:**
+Binary + operator overloaded to add two Point objects. The program returns the summed coordinates correctly.
