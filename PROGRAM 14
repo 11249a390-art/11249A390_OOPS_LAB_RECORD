@@ -1,0 +1,62 @@
+**14. Multiple inheritance**
+
+*Aim:*
+
+Demonstrate a class inheriting from two base classes.
+
+
+*Algorithm:*
+
+
+1.Include <iostream>.
+
+2.Define two base classes (A, B) with their own members.
+
+3.Define Derived : public A, public B that can access members from both bases.
+
+4.In main(), create a Derived object and call a method that uses both base class members.
+
+5.End program.
+
+
+*Program:*
+
+
+#include <iostream>
+
+using namespace std;
+
+class A { public: void showA(){ cout << "A\n"; } };
+
+class B { public: void showB(){ cout << "B\n"; } };
+
+class Derived : public A, public B {
+
+public:
+
+    void showBoth(){ showA(); showB(); }
+
+};
+
+int main() {
+
+    Derived d;
+
+    d.showBoth();
+
+    return 0;
+
+}
+
+*Output:*
+
+
+A
+
+B
+
+C
+
+*Result:*
+
+Multiple inheritance lets a derived class access features of more than one base class. Use with care to avoid ambiguity.
