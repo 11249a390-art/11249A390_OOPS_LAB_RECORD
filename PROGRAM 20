@@ -1,0 +1,43 @@
+**20. To demonstrate templates (class/function template)**
+
+*Aim:*
+Demonstrate function and class templates to achieve generic programming.
+
+*Algorithm:*
+
+1.Include <iostream>.
+2.Implement a function template maxValue<T>(T a, T b) returning larger of two values.
+3.Optionally create a template class Pair<T> that stores two values.
+4.In main(), call maxValue with int and double, and use Pair.
+5.Print results.
+6.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+template<typename T>
+T maxValue(T a, T b) { return (a > b) ? a : b; }
+template<typename T>
+class Pair {
+public:
+    T first, second;
+    Pair(T a, T b): first(a), second(b) {}
+    void show(){ cout << first << ", " << second << endl; }
+};
+int main() {
+    cout << maxValue<int>(3,7) << endl;
+    cout << maxValue<double>(3.5, 2.1) << endl;
+    Pair<string> p("Hi","There");
+    p.show();
+    return 0;
+}
+
+*Output:*
+
+7
+3.5
+Hi, There
+
+*Result:*
+Templates allow writing type-independent code; maxValue and Pair work for multiple data types.
