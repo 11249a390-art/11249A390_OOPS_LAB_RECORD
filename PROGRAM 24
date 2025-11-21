@@ -1,0 +1,50 @@
+# *24. To demonstrate STL – stack and queue*
+
+Aim:
+To demonstrate stack (LIFO) and queue (FIFO) operations.
+
+Algorithm:
+
+1. Start program.
+2. Push elements in stack and queue.
+3. Pop/access elements.
+4. Display results.
+5. End program.
+
+Program:
+
+cpp
+#include <iostream>
+#include <stack>
+#include <queue>
+using namespace std;
+
+int main() {
+    stack<int> s;
+    s.push(1); 
+    s.push(2); 
+    s.push(3);
+    
+    cout << "Stack pop: " << s.top() << endl;
+    s.pop();
+    
+    queue<int> q;
+    q.push(1); 
+    q.push(2); 
+    q.push(3);
+    
+    cout << "Queue front: " << q.front() << endl;
+    q.pop();
+    
+    return 0;
+}
+
+
+Output:
+Stack pop: 3
+Queue front: 1
+
+Result:
+Stack and queue operations performed successfully.
+
+---
