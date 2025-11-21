@@ -1,0 +1,47 @@
+**13. Single inheritance (private and public)**
+
+*Aim:*
+Demonstrate single inheritance and the difference between public and private inheritance.
+
+*Algorithm:*
+
+1.Include <iostream>.
+2.Define a Base class with public/protected/private members.
+3.Define PublicDerived : public Base and PrivateDerived : private Base.
+4.In derived classes, add methods that attempt to access base class members; note which access is permitted.
+5.In main(), create objects and call methods to observe access behavior.
+6.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+class Base {
+public:
+    int a = 10;
+protected:
+    int b = 20;
+private:
+    int c = 30;
+};
+class PublicDerived : public Base {
+public:
+    void show() { cout << "a = " << a << ", b = " << b << endl; }
+};
+class PrivateDerived : private Base {
+public:
+    void showp() { cout << "a = " << a << " (a is private here)" << endl; }
+};
+int main() {
+    PublicDerived pd; pd.show();
+    PrivateDerived pr; pr.showp();
+    return 0;
+}
+
+*Output:*
+
+a = 10, b = 20
+a = 10 (a is private here)
+
+*Result:*
+Public inheritance retains base member access levels for users; private inheritance makes inherited public members private inside derived class. Protected still accessible to derived classes.
