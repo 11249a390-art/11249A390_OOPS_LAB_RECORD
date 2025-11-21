@@ -1,0 +1,37 @@
+**17. Virtual base class (to resolve diamond problem)**
+
+*Aim:*
+Demonstrate use of virtual base class to avoid duplicate base subobjects in diamond inheritance.
+
+*Algorithm:*
+
+1.Include <iostream>.
+2.Create base class Base with data member and a method.
+3.Create Derived1 : virtual public Base and Derived2 : virtual public Base.
+4.Create Final : public Derived1, public Derived2.
+5.In Final, access the Base member to show it is not duplicated.
+6.In main(), create Final object and use the method.
+7.End program.
+
+*Program:*
+
+#include <iostream>
+using namespace std;
+class Base { public: int x; Base(){ x = 10; } };
+class D1 : virtual public Base { };
+class D2 : virtual public Base { };
+class Final : public D1, public D2 {
+public: void show(){ cout << "x = " << x << endl; }
+};
+int main() {
+    Final f;
+    f.show();
+    return 0;
+}
+
+*Output:*
+
+x = 10
+
+*Result:*
+Using virtual inheritance ensures only one Base subobject exists in the diamond, avoiding ambiguity.
